@@ -1,12 +1,14 @@
-import dataclasses
 from datetime import datetime
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.webdriver import WebDriver
 
+import settings
 
-@dataclasses.dataclass
+
 class Driver:
-    driver: WebDriver
+    def __init__(self, driver: WebDriver):
+        self.driver = driver
+        self.driver.get(settings.MAIN_URL)
 
     # TODO
     @property
