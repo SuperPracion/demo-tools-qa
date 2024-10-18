@@ -1,3 +1,4 @@
+import settings
 from base.user import User
 from base.driver import Driver
 
@@ -8,6 +9,7 @@ class Main(Driver):
     def __init__(self, user: User, driver):
         super().__init__(driver)
         self.user = user
+        self.driver.get(settings.MAIN_URL)
 
     def get_header_button(self):
         return self.driver.find_element(By.XPATH, '//*[@href="https://demoqa.com"]')
@@ -52,7 +54,7 @@ class Main(Driver):
 
     def get_widgets_button(self):
         button = self.driver.find_element(By.XPATH, '//*[@class="card mt-4 top-card"][4]')
-        assert button == 'Widgets'
+        assert button.text == 'Widgets'
         return button
 
     def widgets_button_click(self):
