@@ -2,6 +2,7 @@ import settings
 from base.driver import Driver
 from selenium.webdriver.common.by import By
 
+
 class Elements(Driver):
     def get_text_box_button(self):
         return self.driver.find_element(By.XPATH, "//*[contains(text(), 'Text Box')]/parent::*")
