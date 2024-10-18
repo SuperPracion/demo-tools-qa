@@ -2,13 +2,10 @@ from datetime import datetime
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.webdriver import WebDriver
 
-import settings
-
 
 class Driver:
     def __init__(self, driver: WebDriver):
         self.driver = driver
-        self.driver.get(settings.MAIN_URL)
 
     # TODO
     @property
@@ -22,7 +19,7 @@ class Driver:
         assert self.driver.find_element(By.XPATH, f'//*[contains(text(), "{text}")]')
 
     def create_screenshot(self,
-                          path='C:\\Users\\Lenovo\\Documents\\StepikSeleniumAuthomatization\\screens\\',
-                          name=f'screenshot{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}',
+                          path='C:\\Users\\Lenovo\\PycharmProjects\\demo-tools-qa\\tests',
+                          name=f'screenshot{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}',
                           extension='png'):
         self.driver.get_screenshot_as_file(f'{path}{name}.{extension}')
