@@ -9,6 +9,7 @@ class TextBox(Driver):
 
     def input_full_name(self, value):
         self.get_full_name_field().send_keys(value)
+        assert self.get_full_name_field().get_attribute('placeholder') == 'Full Name'
         assert self.get_full_name_field().get_attribute('value') == value
 
     def get_email_field(self):
@@ -16,6 +17,7 @@ class TextBox(Driver):
 
     def input_email(self, value):
         self.get_email_field().send_keys(value)
+        assert self.get_email_field().get_attribute('placeholder') == 'name@example.com'
         assert self.get_email_field().get_attribute('value') == value
 
     def get_current_address_field(self):
@@ -23,6 +25,7 @@ class TextBox(Driver):
 
     def input_current_address(self, value):
         self.get_current_address_field().send_keys(value)
+        assert self.get_current_address_field().get_attribute('placeholder') == 'Current Address'
         assert self.get_current_address_field().get_attribute('value') == value
 
     def get_permanent_address_field(self):
