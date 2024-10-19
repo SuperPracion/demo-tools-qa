@@ -1,4 +1,5 @@
 from base.driver import Driver
+
 from selenium.webdriver.common.by import By
 
 
@@ -47,6 +48,8 @@ class TextBox(Driver):
         if email:
             assert output_field.find_element(By.XPATH, '//*[@id="email"]').text == f'Email:{email}'
         if current_address:
-            assert output_field.find_element(By.XPATH, '//p[@id="currentAddress"]').text == f'Current Address :{current_address}'
+            assert output_field.find_element(By.XPATH,
+                                             '//p[@id="currentAddress"]').text == f'Current Address :{current_address}'
         if permanent_address:
-            assert output_field.find_element(By.XPATH, '//p[@id="permanentAddress"]').text == f'Permananet Address :{permanent_address}'
+            assert output_field.find_element(By.XPATH,
+                                             '//p[@id="permanentAddress"]').text == f'Permananet Address :{permanent_address}'
