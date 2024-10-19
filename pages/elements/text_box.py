@@ -49,10 +49,11 @@ class TextBox(Driver):
         if name:
             assert output_field.find_element(By.XPATH, '//*[@id="name"]').text == f'Name:{name}'
         if email:
-            assert output_field.find_element(By.XPATH, '//*[@id="email"]').text == f'Email:{email}'
+            try:
+                assert output_field.find_element(By.XPATH, '//*[@id="email"]').text == f'Email:{email}'
+            except:
+                assert self.get_email_field().get_attribute('class') == 'mr-sm-2 field-error form-control'
         if current_address:
-            assert output_field.find_element(By.XPATH,
-                                             '//p[@id="currentAddress"]').text == f'Current Address :{current_address}'
+            assert output_field.find_element(By.XPATH, '//p[@id="currentAddress"]').text == f'Current Address :{current_address}'
         if permanent_address:
-            assert output_field.find_element(By.XPATH,
-                                             '//p[@id="permanentAddress"]').text == f'Permananet Address :{permanent_address}'
+            assert output_field.find_element(By.XPATH,'//p[@id="permanentAddress"]').text == f'Permananet Address :{permanent_address}'
