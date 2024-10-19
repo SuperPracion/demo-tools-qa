@@ -17,7 +17,7 @@ def test_open_text_box_page(elements):
 
 
 def test_open_check_box_page(elements):
-    elements.check_box_button_click()
+    elements.checkbox_button_click()
 
 
 def test_open_radio_button_page(elements):
