@@ -11,11 +11,11 @@ class Elements(Driver):
         self.get_text_box_button().click()
         assert self.driver.current_url == f'{settings.MAIN_URL}/text-box'
 
-    def get_check_box_button(self):
+    def get_checkbox_button(self):
         return self.driver.find_element(By.XPATH, "//*[contains(text(), 'Check Box')]/parent::*")
 
-    def check_box_button_click(self):
-        self.get_check_box_button().click()
+    def checkbox_button_click(self):
+        self.get_checkbox_button().click()
         assert self.driver.current_url == f'{settings.MAIN_URL}/checkbox'
 
     def get_radio_button(self):
