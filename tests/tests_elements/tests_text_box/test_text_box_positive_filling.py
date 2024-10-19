@@ -1,3 +1,5 @@
+from runpy import run_path
+
 import pytest
 
 from pages.main.main import Main
@@ -50,3 +52,8 @@ def test_output_visualization(text_box):
     text_box.input_permanent_address(permanent_address)
     text_box.submit_button_click()
     text_box.output_field_check_values(full_name, email, current_address, permanent_address)
+
+
+def test_email_field_error(text_box):
+    text_box.input_email('!')
+    text_box.submit_button_click()
