@@ -1,21 +1,5 @@
 import pytest
-from base.user import User
 from pages.main.main import Main
-
-from selenium import webdriver
-
-
-@pytest.fixture
-def setup_user():
-    user = User()
-    yield user
-
-
-@pytest.fixture
-def setup_driver():
-    driver = webdriver.Chrome()
-    yield driver
-    driver.close()
 
 
 @pytest.fixture

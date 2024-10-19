@@ -1,23 +1,8 @@
-from base.user import User
+import pytest
+
 from pages.main.main import Main
 from pages.elements.elements import Elements
-from pages.elements.text_box import TestBox
-
-import pytest
-from selenium import webdriver
-
-
-@pytest.fixture
-def setup_user():
-    user = User()
-    yield user
-
-
-@pytest.fixture
-def setup_driver():
-    driver = webdriver.Chrome()
-    yield driver
-    driver.close()
+from pages.elements.text_box import TextBox
 
 
 @pytest.fixture
@@ -26,7 +11,7 @@ def text_box(setup_user, setup_driver):
     main_page.elements_button_click()
     elements = Elements(setup_driver)
     elements.text_box_button_click()
-    text_box = TestBox(setup_driver)
+    text_box = TextBox(setup_driver)
     yield text_box
 
 
