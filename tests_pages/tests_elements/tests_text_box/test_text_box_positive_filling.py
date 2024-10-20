@@ -1,5 +1,3 @@
-from runpy import run_path
-
 import pytest
 
 from pages.main.main import Main
