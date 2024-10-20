@@ -4,7 +4,7 @@ from base.driver import Driver
 from settings import MAIN_URL
 
 
-class Books(Driver):
+class BookStoreApplication(Driver):
     def get_login_button(self):
         return self.driver.find_element(By.XPATH, "//*[contains(text(), 'Login')]/parent::*")
 
