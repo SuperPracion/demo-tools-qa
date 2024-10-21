@@ -1,3 +1,4 @@
+from time import sleep
 from selenium.webdriver.common.by import By
 
 from base.driver import Driver
@@ -5,7 +6,7 @@ from base.driver import Driver
 
 class Alerts(Driver):
     def get_alert_button(self):
-        return self.driver.find_element(By.XPATH, '//*[@id="promtButton"]')
+        return self.driver.find_element(By.XPATH, '//*[@id="alertButton"]')
 
     def alert_button_click(self):
         self.get_alert_button().click()
@@ -16,6 +17,7 @@ class Alerts(Driver):
 
     def time_alert_button_click(self):
         self.get_timer_alert_button().click()
+        sleep(6)
         return self.driver.switch_to.alert
 
     def get_confirm_alert_button(self):
