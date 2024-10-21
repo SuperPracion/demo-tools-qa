@@ -33,7 +33,6 @@ class BrowserWindows(Driver):
 
         self.driver.switch_to.window(original_window)
 
-
     def get_new_window_message_button(self):
         return self.driver.find_element(By.XPATH, "//*[@id='messageWindowButton']")
 
