@@ -25,3 +25,9 @@ def test_where_does_it_come_from_open(accordian):
 
 def test_why_do_we_use_it(accordian):
     accordian.card_header_why_do_we_use_it_click()
+
+
+def test_open_all_cards(accordian):
+    accordian.card_header_why_do_we_use_it_click()
+    accordian.card_header_where_does_it_come_from_click()
+    accordian.card_header_what_is_lorem_click()
