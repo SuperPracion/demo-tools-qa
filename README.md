@@ -21,19 +21,19 @@
 > > widgets
 > 
 > tests - описание тестовых сценариев  
-> > test_alerts_windows  
+> > tests_alerts_windows  
 > > > screens  
 > > > allure  
 > > > ...  
 > > > test_1.py  
 > >
-> > test_books   
+> > tests_books   
 > > > screens  
 > > > allure  
 > > > ...  
 > > > test_1.py  
 > >
-> > test_widgets  
+> > tests_widgets  
 > > > ...
 >
 > utils - не относящиеся прямо к автоматизации программы  
