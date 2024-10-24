@@ -21,13 +21,13 @@
 > > widgets
 > 
 > tests - описание тестовых сценариев  
-> > tests_alerts_windows  
+> > test_alerts_windows  
 > > > screens  
 > > > allure  
 > > > ...  
 > > > test_1.py  
 > >
-> > tests_books   
+> > test_books   
 > > > screens  
 > > > allure  
 > > > ...  
@@ -41,4 +41,4 @@
 > > address_validator.py 
 > 
 > readme.md - описание проекта  
-> settings.py - общие настройки  
+> settings.py - общие настройки
