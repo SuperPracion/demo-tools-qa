@@ -15,6 +15,8 @@ def date_picker(setup_user, setup_driver):
 
 def test_set_month_and_year(date_picker):
     date_picker.set_date_picker_mont_year('12', '12', '1999')
+    assert date_picker.get_date_picker_month_year_input().get_attribute('value') == '12/12/1999'
 
 def test_set_day_month_and_year(date_picker):
     date_picker.set_date_and_time_picker('01', '02', '2003', '07', '30')
+    assert date_picker.get_date_and_time_picker_input().get_attribute('value') == 'January 2, 2003 7:30 AM'
