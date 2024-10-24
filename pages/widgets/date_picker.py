@@ -11,7 +11,7 @@ class DatePicker(Driver):
     def set_date_picker_mont_year(self, day, month='', year=''):
         field = self.get_date_picker_month_year_input()
         field.click()
-        field.send_keys(Keys.CONTROL + 'A')
+        field.send_keys(Keys.CONTROL + 'a')
         field.send_keys(Keys.BACKSPACE)
         field.send_keys('/'.join([day, month, year]))
         field.send_keys(Keys.ENTER)
@@ -22,7 +22,7 @@ class DatePicker(Driver):
     def set_date_and_time_picker(self, day, month='', year='', hour='', minute=''):
         field = self.get_date_and_time_picker_input()
         field.click()
-        field.send_keys(Keys.CONTROL + 'A')
+        field.send_keys(Keys.CONTROL + 'a')
         field.send_keys(Keys.BACKSPACE)
-        field.send_keys('/'.join([day, month, year]) + ':'.join([hour, minute]))
+        field.send_keys('/'.join([day, month, year]) + ' ' + ':'.join([hour, minute]))
         field.send_keys(Keys.ENTER)
