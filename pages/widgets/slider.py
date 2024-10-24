@@ -7,10 +7,10 @@ class Slider(Driver):
     def get_range_slider(self):
         return self.driver.find_element(By.XPATH, '//*[@class="range-slider range-slider--primary"]')
 
-    def set_range_slider_value(self):
+    def set_range_slider_value(self, value):
         mover = ActionChains(self.driver)
         slider = self.get_range_slider()
-        mover.click_and_hold(slider).move_by_offset(20, 0).release().perform()
+        mover.click_and_hold(slider).move_by_offset(value, 0).release().perform()
 
     def get_slider_field(self):
         return self.driver.find_element(By.XPATH, '//*[@id="sliderValue"]')
