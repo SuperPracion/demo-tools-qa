@@ -33,11 +33,11 @@ class Widgets(Driver):
         self.get_slider_button().click()
         assert self.driver.current_url == f'{MAIN_URL}/slider'
 
-    def get_process_bar_button(self):
+    def get_progress_bar_button(self):
         return self.driver.find_element(By.XPATH, "//*[contains(text(), 'Progress Bar')]/parent::*")
 
-    def process_dar_button_click(self):
-        self.get_process_bar_button().click()
+    def progress_dar_button_click(self):
+        self.get_progress_bar_button().click()
         assert self.driver.current_url == f'{MAIN_URL}/progress-bar'
 
     def get_tabs_button(self):
