@@ -21,15 +21,17 @@
 > > widgets
 > 
 > tests - описание тестовых сценариев  
+> > allure-results 
+> > > report_1  
+> > > report_2  
+> >
 > > test_alerts_windows  
-> > > screens  
-> > > allure  
+> > > screens   
 > > > ...  
 > > > test_1.py  
 > >
 > > test_books   
-> > > screens  
-> > > allure  
+> > > screens
 > > > ...  
 > > > test_1.py  
 > >
@@ -37,7 +39,6 @@
 > > > ...
 >
 > utils - не относящиеся прямо к автоматизации программы  
-> > allure_reports.py  
 > > address_validator.py 
 > 
 > readme.md - описание проекта  
