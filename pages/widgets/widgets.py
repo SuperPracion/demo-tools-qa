@@ -50,7 +50,7 @@ class Widgets(Driver):
     def get_tools_tips_button(self):
         return self.driver.find_element(By.XPATH, "//*[contains(text(), 'Tool Tips')]/parent::*")
 
-    def tools_tips_button_click(self):
+    def tool_tips_button_click(self):
         self.get_tools_tips_button().click()
         assert self.driver.current_url == f'{MAIN_URL}/tool-tips'
 
