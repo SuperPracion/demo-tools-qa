@@ -3,8 +3,6 @@ import pytest
 from pages.main.main import Main
 from pages.widgets.widgets import Widgets
 from pages.widgets.slider import Slider
-from tests_pages.conftest import setup_driver
-
 
 @pytest.fixture
 def slider(setup_user, setup_driver):
