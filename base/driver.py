@@ -7,7 +7,12 @@ class Driver:
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
-    # TODO
+    # def click(self, element):
+    #     pass
+    #
+    # def move_to(self, element):
+    #     pass
+
     @property
     def get_current_url(self):
         # TODO Задушить или доработать

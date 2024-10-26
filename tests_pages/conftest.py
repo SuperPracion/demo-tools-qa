@@ -13,9 +13,9 @@ def setup_user():
 
 @pytest.fixture
 def setup_driver():
-    #driver = webdriver.Edge()
+    driver = webdriver.Edge()
     #driver = webdriver.Firefox()
-    driver = webdriver.Chrome()
+    #driver = webdriver.Chrome()
     driver.implicitly_wait(10)
     yield driver
     driver.close()
