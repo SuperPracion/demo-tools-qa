@@ -4,7 +4,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from base.driver import Driver
 
 
-class ToolsTips(Driver):
+class ToolTips(Driver):
     def get_tools_tip_button(self):
         return self.driver.find_element(By.XPATH, '//*[@id="toolTipButton"]')
 
