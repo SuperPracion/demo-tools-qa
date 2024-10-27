@@ -20,20 +20,21 @@
 > > ...  
 > > widgets
 > 
+> screenshots  
+> >  
+> >
 > tests - описание тестовых сценариев  
 > > allure-results 
 > > > report_1  
 > > > report_2  
 > >
-> > test_alerts_windows  
-> > > screens   
+> > test_alerts_windows
 > > > ...  
 > > > test_1.py  
 > >
-> > test_books   
-> > > screens  
+> > test_books
 > > > ...  
-> > > test_1.py  
+> > > test_n.py  
 > >
 > > test_widgets  
 > > > ...
