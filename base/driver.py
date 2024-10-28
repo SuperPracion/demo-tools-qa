@@ -1,30 +1,34 @@
+import os.path
 from datetime import datetime
-from selenium.webdriver.common.by import By
+
+import allure
 from selenium.webdriver.chrome.webdriver import WebDriver
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 
 
 class Driver:
     def __init__(self, driver: WebDriver):
         self.driver = driver
+        self.wait = WebDriverWait(self.driver, 10)
 
-    # def click(self, element):
-    #     pass
-    #
-    # def move_to(self, element):
-    #     pass
+    def click(self, locator):
+        self.wait.until(expected_conditions.element_to_be_clickable(locator)).click()
 
-    @property
-    def get_current_url(self):
-        # TODO Задушить или доработать
-        """Бесполезный Метод получения текущй URL страницы"""
-        return self.driver.current_url
+    def input_text(self, locator, text):
+        self.wait.until(expected_conditions.visibility_of_element_located(locator)).send_keys(text)
 
-    def check_text_on_page(self, text):
-        """ Проверка наличия текста на страницы"""
-        assert self.driver.find_element(By.XPATH, f'//*[contains(text(), "{text}")]')
+    def get_element_text(self, locator):
+        return self.wait.until(expected_conditions.visibility_of_element_located(locator)).text
 
-    def create_screenshot(self,
-                          path='C:\\Users\\Lenovo\\PycharmProjects\\demo-tools-qa\\tests',
-                          name=f'screenshot{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}',
-                          extension='png'):
-        self.driver.get_screenshot_as_file(f'{path}{name}.{extension}')
+    def save_screenshot(self, name=None, dir='screenshots'):
+        if not name:
+            name = self.driver.current_url
+
+        timestamp = datetime.now().strftime('%Y%m%d %H:%M:%S')
+        screen_path = os.path.join(dir, f'{name} {timestamp}.png')
+
+        self.driver.save_screenshot(screen_path)
+
+        with open(screen_path, 'rb') as image_file:
+            allure.attach(image_file.read(), name=f'{name} {timestamp}', attachment_type=allure.attachment_type.PNG)
