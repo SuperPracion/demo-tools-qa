@@ -20,7 +20,7 @@ class Interaction(Driver):
         assert self.driver.current_url == f'{MAIN_URL}/selectable'
 
     def get_resizable_button(self):
-        return self.driver.find_element(By.XPATH, "Resizable")
+        return self.driver.find_element(By.XPATH, "//*[contains(text(), 'Resizable')]/parent::*")
 
     def resizable_button_click(self):
         self.get_resizable_button().click()
