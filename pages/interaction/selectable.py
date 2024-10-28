@@ -17,4 +17,4 @@ class Selectable(Driver):
         self.get_demo_tab_grid().click()
 
     def get_group_item_by_text(self, text):
-        self.driver.find_element(By.XPATH, f'//*[contains(text(), "{text}")]')
+        return self.driver.find_element(By.XPATH, f'//*[contains(text(), "{text}")]')
