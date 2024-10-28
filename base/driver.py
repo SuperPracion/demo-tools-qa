@@ -12,15 +12,18 @@ class Driver:
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 10)
 
+    @allure.step('touch element')
     def click(self, locator):
         self.wait.until(expected_conditions.element_to_be_clickable(locator)).click()
 
+    @allure.step('write text into')
     def input_text(self, locator, text):
         self.wait.until(expected_conditions.visibility_of_element_located(locator)).send_keys(text)
 
     def get_element_text(self, locator):
         return self.wait.until(expected_conditions.visibility_of_element_located(locator)).text
 
+    @allure.step('scroll to element')
     def scroll_to_element(self, locator):
         element = self.wait.until(expected_conditions.visibility_of_element_located(locator))
         self.driver.execute_script('arguments[0].scrollIntoView(true);', element)
@@ -29,18 +32,22 @@ class Driver:
         alert = self.wait.until(expected_conditions.alert_is_present())
         return alert
 
+    @allure.step('alert accept')
     def accept_alert(self):
         alert = self.wait.until(expected_conditions.alert_is_present())
         alert.accept()
 
+    @allure.step('alert dismiss')
     def dismiss_alert(self):
         alert = self.wait.until(expected_conditions.alert_is_present())
         alert.dismiss()
 
+    @allure.step('hover over to element')
     def hover_over_element(self, locator):
         element = self.wait.until(expected_conditions.visibility_of_element_located(locator))
         ActionChains(self.driver).move_to_element(element)
 
+    @allure.step('save screenshot')
     def save_screenshot(self, name=None, dir='screenshots'):
         if not name:
             name = self.driver.current_url
