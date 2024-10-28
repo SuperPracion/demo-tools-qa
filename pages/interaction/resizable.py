@@ -13,4 +13,5 @@ class Resizable(Driver):
 
     def set_resizable_size(self, element, width, height):
         action = ActionChains(self.driver)
-        action.drag_and_drop_by_offset(element, width - 200, height - 200)
+        chevron = element.find_element(By.XPATH, './span')
+        action.drag_and_drop_by_offset(chevron, width - 200, height - 200).perform()
