@@ -1,4 +1,5 @@
 import pytest
+from selenium.webdriver.common.by import By
 
 from pages.main.main import Main
 from pages.alerts_windows.alerts_windows import AlertsWindows
@@ -16,12 +17,22 @@ def browser_windows(setup_user, setup_driver):
 
 
 def test_open_new_tab(browser_windows):
-    browser_windows.new_tab_button_click()
+    button = browser_windows.get_new_tab_button()
+    browser_windows.click(button)
+    assert len(browser_windows.driver.window_handles) > 1
+    browser_windows.driver.switch_to.window(browser_windows.driver.window_handles[1])
+    assert browser_windows.driver.find_element(By.XPATH, "//*[@id='sampleHeading']").text == 'This is a sample page'
 
 
 def test_open_new_window(browser_windows):
-    browser_windows.new_window_button_click()
+    button = browser_windows.get_new_window_button()
+    browser_windows.click(button)
+    assert len(browser_windows.driver.window_handles) > 1
+    browser_windows.driver.switch_to.window(browser_windows.driver.window_handles[1])
+    assert browser_windows.driver.find_element(By.XPATH, "//*[@id='sampleHeading']").text == 'This is a sample page'
 
 
 def test_open_new_windows_message(browser_windows):
-    browser_windows.new_window_message_button_click()
+    button = browser_windows.get_new_window_message_button()
+    browser_windows.click(button)
+    assert len(browser_windows.driver.window_handles) > 1

@@ -1,5 +1,5 @@
+import time
 import pytest
-from time import sleep
 
 from pages.main.main import Main
 from pages.alerts_windows.alerts_windows import AlertsWindows
@@ -17,31 +17,31 @@ def alert(setup_user, setup_driver):
 
 
 def test_accept_simple_alert(alert):
-    alert.alert_button_click()
+    alert.click(alert.get_alert_button())
     alert.alert_accept()
 
 
 def test_accept_timer_alert(alert):
-    alert.time_alert_button_click()
-    sleep(5)
+    alert.click(alert.get_timer_alert_button())
+    time.sleep(6)
     alert.alert_accept()
 
 
 def test_accept_confirm_alert(alert):
-    alert.confirm_alert_button_click()
+    alert.click(alert.get_confirm_alert_button())
     alert.confirm_alert_accept()
 
 
 def test_cancel_confirm_alert(alert):
-    alert.confirm_alert_button_click()
+    alert.click(alert.get_confirm_alert_button())
     alert.confirm_alert_dismiss()
 
 
 def test_accept_promt_alert(alert):
-    alert.promt_alert_button_click()
+    alert.click(alert.get_promt_alert_button())
     alert.promt_alert_accept('123')
 
 
 def test_cancel_promt_alert(alert):
-    alert.promt_alert_button_click()
+    alert.click(alert.get_promt_alert_button())
     alert.promt_alert_dismiss()
