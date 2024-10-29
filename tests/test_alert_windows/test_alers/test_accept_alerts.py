@@ -5,8 +5,8 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 
 from pages.main.main import Main
-from pages.alerts_windows.alerts_windows import AlertsWindows
 from pages.alerts_windows.alerts import Alerts
+from pages.alerts_windows.alerts_windows import AlertsWindows
 from base.element_found_exception import ElementFoundException
 
 
@@ -79,7 +79,7 @@ class TestPromtAlert:
         assert alerts.get_alert().text == 'Please enter your name'
         alerts.get_alert().send_keys('123')
         alerts.accept_alert()
-        assert alerts.driver.find_element(By.XPATH, '//*[@id="promptResult"]').text == f'You entered {'123'}'
+        assert alerts.driver.find_element(By.XPATH, '//*[@id="promptResult"]').text == f'You entered 123'
 
     @allure.step('dismiss promt alert')
     def test_cancel_promt_alert(self, alerts):

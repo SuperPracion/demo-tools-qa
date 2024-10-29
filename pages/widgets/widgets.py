@@ -62,7 +62,7 @@ class Widgets(Driver):
         assert self.driver.current_url == f'{MAIN_URL}/menu'
 
     def get_select_menu_button(self):
-        return self.driver.find_element(By.XPATH, "//*[contains(text(), 'Select Menu')]/parent::li")
+        return self.driver.find_element(By.XPATH, '//*[contains(text(), "Select Menu")]/parent::li')
 
     def select_menu_click(self):
         self.get_select_menu_button().click()
