@@ -10,7 +10,11 @@ from selenium.webdriver.support import expected_conditions
 class Driver:
     def __init__(self, driver: WebDriver):
         self.driver = driver
-        self.wait = WebDriverWait(self.driver, 10)
+        self.wait = WebDriverWait(self.driver, 2)
+
+    @property
+    def current_url(self):
+        return self.driver.current_url
 
     @allure.step('touch element')
     def click(self, locator):
