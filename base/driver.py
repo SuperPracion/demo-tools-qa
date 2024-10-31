@@ -21,8 +21,8 @@ class Driver:
         self.wait.until(expected_conditions.element_to_be_clickable(locator)).click()
 
     @allure.step('write text into')
-    def input_text(self, locator, text):
-        self.wait.until(expected_conditions.visibility_of_element_located(locator)).send_keys(text)
+    def input_text(self, element, text):
+        self.wait.until(expected_conditions.visibility_of(element)).send_keys(text)
 
     def get_element_text(self, locator):
         return self.wait.until(expected_conditions.visibility_of_element_located(locator)).text
@@ -47,8 +47,8 @@ class Driver:
         alert.dismiss()
 
     @allure.step('hover over to element')
-    def hover_over_element(self, locator):
-        element = self.wait.until(expected_conditions.visibility_of_element_located(locator))
+    def hover_over_element(self, element):
+        element = self.wait.until(expected_conditions.visibility_of(element))
         ActionChains(self.driver).move_to_element(element)
 
     @allure.step('save screenshot')
