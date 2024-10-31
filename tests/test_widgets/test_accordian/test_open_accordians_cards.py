@@ -1,33 +1,24 @@
-import pytest
+import allure
 
-from pages.main.main import Main
-from pages.widgets.widgets import Widgets
-from pages.widgets.accordian import Accordian
+from selenium.webdriver.common.by import By
 
 
-@pytest.fixture
-def accordian(setup_user, setup_driver):
-    main_page = Main(setup_user, setup_driver)
-    main_page.widgets_button_click()
-    widgets = Widgets(setup_driver)
-    widgets.accordian_button_click()
-    accordian = Accordian(setup_driver)
-    yield accordian
+@allure.title('')
+class TestAccordianCards:
+    @allure.step('')
+    def test_what_is_lorem_open(self, accordian_page):
+        card = accordian_page.get_card_header_what_is_lorem()
+        accordian_page.click(card)
+        assert accordian_page.driver.find_element(By.XPATH, '//*[@id="section1Content"]').text
 
+    @allure.step('')
+    def test_where_does_it_come_from_open(self, accordian_page):
+        card = accordian_page.get_card_header_where_does_it_come_from()
+        accordian_page.click(card)
+        assert accordian_page.driver.find_element(By.XPATH, '//*[@id="section2Content"]/p').text
 
-def test_what_is_lorem_open(accordian):
-    accordian.card_header_what_is_lorem_click()
-
-
-def test_where_does_it_come_from_open(accordian):
-    accordian.card_header_where_does_it_come_from_click()
-
-
-def test_why_do_we_use_it(accordian):
-    accordian.card_header_why_do_we_use_it_click()
-
-
-def test_open_all_cards(accordian):
-    accordian.card_header_why_do_we_use_it_click()
-    accordian.card_header_where_does_it_come_from_click()
-    accordian.card_header_what_is_lorem_click()
+    @allure.step('')
+    def test_why_do_we_use_it(self, accordian_page):
+        card = accordian_page.get_card_header_why_do_we_use_it()
+        accordian_page.click(card)
+        assert accordian_page.driver.find_element(By.XPATH, '//*[@id="section3Content"]/p').text
