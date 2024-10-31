@@ -1,26 +1,25 @@
-import pytest
+import allure
 
-from pages.main.main import Main
-from pages.widgets.widgets import Widgets
-from pages.widgets.auto_complete import AutoComplete
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 
+@allure.title('')
+class TestAutoCompleteField:
+    @allure.step('')
+    def test_multiple_auto_complete(self, auto_complete_page):
+        field = auto_complete_page.get_auto_complete_multiple_field()
+        field.click()
+        field.send_keys('Re')
+        field.send_keys(Keys.ENTER)
+        field.send_keys('Ye')
+        assert auto_complete_page.driver.find_element(By.XPATH, '//*[@id="autoCompleteMultipleContainer"]/div/div[1]/div[1]').text == 'Red'
+        assert auto_complete_page.driver.find_element(By.XPATH, '//*[@id="autoCompleteMultipleContainer"]/div/div[1]/div[2]').text == 'Yellow'
 
-@pytest.fixture
-def auto_complete(setup_user, setup_driver):
-    main_page = Main(setup_user, setup_driver)
-    main_page.widgets_button_click()
-    widgets = Widgets(setup_driver)
-    widgets.auto_complete_button_click()
-    auto_complete = AutoComplete(setup_driver)
-    yield auto_complete
-
-def test_multiple_auto_complete(auto_complete):
-    auto_complete.auto_complete_multiple_write('Re')
-    auto_complete.auto_complete_multiple_write('Ye')
-
-def test_single_auto_complete(auto_complete):
-    auto_complete.auto_complete_single_write('Re')
-
-def test_single_and_auto_complete(auto_complete):
-    auto_complete.auto_complete_single_write('Gre')
-    auto_complete.auto_complete_multiple_write('Blu')
+    @allure.step('')
+    def test_single_auto_complete(self, auto_complete_page):
+        field = auto_complete_page.get_auto_complete_single_field()
+        field.click()
+        field.send_keys('Re')
+        field.send_keys(Keys.ENTER)
+        field.send_keys(Keys.ENTER)
+        assert auto_complete_page.driver.find_element(By.XPATH, '//*[@class="auto-complete__single-value css-1uccc91-singleValue"]').text == 'Red'
