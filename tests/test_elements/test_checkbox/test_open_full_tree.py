@@ -1,53 +1,64 @@
-import pytest
-
-from pages.main.main import Main
-from pages.elements.elements import Elements
-from pages.elements.checkbox import CheckBox
+import allure
 
 
-@pytest.fixture
-def checkbox(setup_user, setup_driver):
-    main_page = Main(setup_user, setup_driver)
-    main_page.elements_button_click()
-    elements = Elements(setup_driver)
-    elements.checkbox_button_click()
-    checkbox = CheckBox(setup_driver)
-    yield checkbox
+@allure.title('')
+class TestOpenTreeCatalogs:
+    @allure.step('')
+    def test_open_home(self, checkbox_page):
+        home_toggle = checkbox_page.get_home_toggle()
+        checkbox_page.click(home_toggle)
+        # TODO добавить проверки
 
+    @allure.step('')
+    def test_select_home_checkbox(self, checkbox_page):
+        home_checkbox = checkbox_page.get_home_checkbox()
+        checkbox_page.click(home_checkbox)
+        # TODO добавить проверки
 
-def test_open_home(checkbox):
-    checkbox.home_toggle_click()
+    @allure.step('')
+    def test_open_desktop(self, checkbox_page):
+        home_toggle = checkbox_page.get_home_toggle()
+        checkbox_page.click(home_toggle)
+        desktop_toggle = checkbox_page.get_desktop_toggle()
+        checkbox_page.click(desktop_toggle)
+        # TODO добавить проверки
 
+    @allure.step('')
+    def test_select_desktop_checkbox(self, checkbox_page):
+        home_toggle = checkbox_page.get_home_toggle()
+        checkbox_page.click(home_toggle)
+        desktop_toggle = checkbox_page.get_desktop_checkbox()
+        checkbox_page.click(desktop_toggle)
+        # TODO добавить проверки
 
-def test_select_home_checkbox(checkbox):
-    checkbox.home_check_box_click()
+    @allure.step('')
+    def test_open_documents(self, checkbox_page):
+        home_toggle = checkbox_page.get_home_toggle()
+        checkbox_page.click(home_toggle)
+        document_toggle = checkbox_page.get_documents_toggle()
+        checkbox_page.click(document_toggle)
+        # TODO добавить проверки
 
+    @allure.step('')
+    def test_select_documents_checkbox(self, checkbox_page):
+        home_toggle = checkbox_page.get_home_toggle()
+        checkbox_page.click(home_toggle)
+        checkbox_document = checkbox_page.get_documents_checkbox()
+        checkbox_page.click(checkbox_document)
+        # TODO добавить проверки
 
-def test_open_desktop(checkbox):
-    checkbox.home_toggle_click()
-    checkbox.desktop_toggle_click()
+    @allure.step('')
+    def test_open_downloads(self, checkbox_page):
+        home_toggle = checkbox_page.get_home_toggle()
+        checkbox_page.click(home_toggle)
+        download_toggle = checkbox_page.get_downloads_toggle()
+        checkbox_page.click(download_toggle)
+        # TODO добавить проверки
 
-
-def test_select_desktop_checkbox(checkbox):
-    checkbox.home_toggle_click()
-    checkbox.desktop_checkbox_click()
-
-
-def test_open_documents(checkbox):
-    checkbox.home_toggle_click()
-    checkbox.documents_toggle_click()
-
-
-def test_select_documents_checkbox(checkbox):
-    checkbox.home_toggle_click()
-    checkbox.documents_checkbox_click()
-
-
-def test_open_downloads(checkbox):
-    checkbox.home_toggle_click()
-    checkbox.downloads_toggle_click()
-
-
-def test_select_downloads_checkbox(checkbox):
-    checkbox.home_toggle_click()
-    checkbox.download_checkbox_click()
+    @allure.step('')
+    def test_select_downloads_checkbox(self, checkbox_page):
+        home_toggle = checkbox_page.get_home_toggle()
+        checkbox_page.click(home_toggle)
+        checkbox_download = checkbox_page.get_downloads_checkbox()
+        checkbox_page.click(checkbox_download)
+        # TODO добавить проверки
