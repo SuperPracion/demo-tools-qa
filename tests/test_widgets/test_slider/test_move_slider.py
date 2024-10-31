@@ -1,24 +1,19 @@
-import pytest
+import allure
 
-from pages.main.main import Main
-from pages.widgets.widgets import Widgets
-from pages.widgets.slider import Slider
-
-@pytest.fixture
-def slider(setup_user, setup_driver):
-    main_page = Main(setup_user, setup_driver)
-    main_page.widgets_button_click()
-    widgets = Widgets(setup_driver)
-    widgets.slider_button_click()
-    slider = Slider(setup_driver)
-    yield slider
+from selenium.webdriver.common.action_chains import ActionChains
 
 
-def test_set_value_to_field(slider):
-    slider.set_slider_field_value(-80)
-    assert slider.get_range_slider().get_attribute('value') == '25'
+@allure.title('')
+class TestMoveSlider:
+    @allure.step('')
+    def test_set_value_to_field(self, slider_page):
+        slider = slider_page.get_slider_field()
+        slider_page.input_text(slider, -80)
+        assert slider_page.get_range_slider().get_attribute('value') == '25'
 
-
-def test_move_slider(slider):
-    slider.set_range_slider_value(80)
-    assert slider.get_slider_field().get_attribute('value') == '69'
+    @allure.step('')
+    def test_move_slider(self, slider_page):
+        mover = ActionChains(slider_page.driver)
+        slider = slider_page.get_range_slider()
+        mover.click_and_hold(slider).move_by_offset(80, 0).release().perform()
+        assert slider_page.get_slider_field().get_attribute('value') == '69'
