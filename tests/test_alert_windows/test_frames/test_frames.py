@@ -1,5 +1,6 @@
 import allure
 import pytest
+from allure_commons.types import AttachmentType
 
 from pages.alerts_windows.frames import Frames
 
@@ -11,13 +12,15 @@ def frames_page(alerts_windows_page):
     yield frames_page
 
 
-@allure.title('')
-@allure.step('')
+@allure.title('Test switch to page frame 1')
+@allure.step('switch to frame 1')
 def test_switch_to_frame1(frames_page):
     frames_page.switch_to_frame1()
+    allure.attach(frames_page.driver.get_screenshot_as_png(), 'switch_to_frame1', AttachmentType.PNG)
 
 
-@allure.title('')
-@allure.step('')
+@allure.title('Test switch to page frame 2')
+@allure.step('switch to frame 2')
 def test_switch_to_from2(frames_page):
     frames_page.switch_to_frame2()
+    allure.attach(frames_page.driver.get_screenshot_as_png(), 'switch_to_from2', AttachmentType.PNG)
