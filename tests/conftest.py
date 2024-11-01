@@ -26,6 +26,8 @@ from pages.widgets.slider import Slider
 from pages.widgets.tabs import Tabs
 from pages.widgets.tool_tips import ToolTips
 
+from pages.alerts_windows.alerts_windows import AlertsWindows
+
 
 @pytest.fixture
 def setup_user():
@@ -183,3 +185,11 @@ def tool_tips_page(widgets_page):
     widgets_page.click(widgets_page.get_tools_tips_button())
     tool_tips_page = ToolTips(widgets_page.driver)
     yield tool_tips_page
+
+
+@allure.step('open alert page')
+@pytest.fixture
+def alerts_windows_page(main_page):
+    main_page.click(main_page.get_alerts_windows_button())
+    alerts_windows_page = AlertsWindows(main_page.driver)
+    yield alerts_windows_page
