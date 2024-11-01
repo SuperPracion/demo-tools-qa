@@ -2,6 +2,7 @@
 import pytest
 import allure
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 from base.user import User
 from pages.main.main import Main
@@ -37,9 +38,11 @@ def setup_user():
 
 @pytest.fixture
 def setup_driver():
+    options = Options()
+    options.add_argument('--headless')
     # driver = webdriver.Edge()
     # driver = webdriver.Firefox()
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options)
     driver.maximize_window()
     yield driver
     driver.close()
