@@ -1,23 +1,23 @@
+import allure
 import pytest
 
-from pages.main.main import Main
-from pages.alerts_windows.alerts_windows import AlertsWindows
 from pages.alerts_windows.frames import Frames
 
-
+@allure.step('open frame page')
 @pytest.fixture
-def frames(setup_user, setup_driver):
-    main_page = Main(setup_user, setup_driver)
-    main_page.alerts_windows_button_click()
-    alerts_windows = AlertsWindows(setup_driver)
-    alerts_windows.frames_button_click()
-    frames = Frames(setup_driver)
-    yield frames
+def frames_page(alerts_windows_page):
+    alerts_windows_page.click(alerts_windows_page.get_frames_button())
+    frames_page = Frames(alerts_windows_page.driver)
+    yield frames_page
 
 
-def test_switch_to_frame1(frames):
-    frames.switch_to_frame1()
+@allure.title('')
+@allure.step('')
+def test_switch_to_frame1(frames_page):
+    frames_page.switch_to_frame1()
 
 
-def test_switch_to_from2(frames):
-    frames.switch_to_frame2()
+@allure.title('')
+@allure.step('')
+def test_switch_to_from2(frames_page):
+    frames_page.switch_to_frame2()
