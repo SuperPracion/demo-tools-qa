@@ -1,3 +1,4 @@
+from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
 
 from tests.conftest import *
@@ -6,7 +7,7 @@ from pages.alerts_windows.alerts_windows import AlertsWindows
 from pages.alerts_windows.nestedframes import NestedFrames
 
 
-@allure.title('')
+@allure.title('Test switch to parent frame')
 def test_switch_to_parent_frame(setup_user, setup_driver):
     main_page = Main(setup_user, setup_driver)
     main_page.click(main_page.get_alerts_windows_button())
@@ -18,9 +19,10 @@ def test_switch_to_parent_frame(setup_user, setup_driver):
     nestedframes.driver.switch_to.frame(frame)
 
     assert nestedframes.driver.find_element(By.XPATH, '//body').text == 'Parent frame'
+    allure.attach(nestedframes.driver.get_screenshot_as_png(), 'switch_to_parent_frame', AttachmentType.PNG)
 
 
-@allure.title('')
+@allure.title('Test switch to child frame')
 def test_switch_to_child_frame(setup_user, setup_driver):
     main_page = Main(setup_user, setup_driver)
     main_page.click(main_page.get_alerts_windows_button())
@@ -35,3 +37,4 @@ def test_switch_to_child_frame(setup_user, setup_driver):
     nestedframes.driver.switch_to.frame(child_frame)
 
     assert nestedframes.driver.find_element(By.XPATH, '//body').text == 'Child Iframe'
+    allure.attach(nestedframes.driver.get_screenshot_as_png(), 'switch_to_child_frame', AttachmentType.PNG)
