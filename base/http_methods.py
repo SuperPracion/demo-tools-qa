@@ -7,25 +7,25 @@ class HttpMethods:
     cookie = ''
 
     @staticmethod
+    @allure.step('send get request')
     def get(url):
-        #with allure.step('Отправка GET запроса'):
-            res = requests.get(url, headers=HttpMethods.headers, cookies=HttpMethods.cookie)
-            return res
+        res = requests.get(url, headers=HttpMethods.headers, cookies=HttpMethods.cookie)
+        return res
 
     @staticmethod
+    @allure.step('send post request')
     def post(url, body):
-        #with allure.step('Отправка POST запроса'):
-            res = requests.post(url, headers=HttpMethods.headers, cookies=HttpMethods.cookie, json=body)
-            return res
+        res = requests.post(url, headers=HttpMethods.headers, cookies=HttpMethods.cookie, json=body)
+        return res
 
     @staticmethod
+    @allure.step('send put request')
     def put(url, body):
-        #with allure.step('Отправка PUT запроса'):
-            res = requests.put(url, headers=HttpMethods.headers, cookies=HttpMethods.cookie, json=body)
-            return res
+        res = requests.put(url, headers=HttpMethods.headers, cookies=HttpMethods.cookie, json=body)
+        return res
 
     @staticmethod
+    @allure.step('send delete request')
     def delete(url, body):
-        #with allure.step('Отправка DELETE запроса'):
-            res = requests.delete(url, headers=HttpMethods.headers, cookies=HttpMethods.cookie, json=body)
-            return res
+        res = requests.delete(url, headers=HttpMethods.headers, cookies=HttpMethods.cookie, json=body)
+        return res
