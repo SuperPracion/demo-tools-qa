@@ -1,13 +1,15 @@
+import allure
 import os.path
 from datetime import datetime
-
-import allure
 from selenium.webdriver import ActionChains
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
 class Driver:
+    """
+    Описание: Базовый класс для страниц. В класс вынесены общие действия.
+    """
     def __init__(self, driver: WebDriver):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 2)
