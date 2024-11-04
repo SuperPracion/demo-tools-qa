@@ -13,6 +13,7 @@ def browser_window_page(alerts_windows_page):
     yield browser_page
 
 
+# Пример тестов через функции
 @allure.title('Test new tab')
 @allure.step('open new tab')
 def test_open_new_tab(browser_window_page):

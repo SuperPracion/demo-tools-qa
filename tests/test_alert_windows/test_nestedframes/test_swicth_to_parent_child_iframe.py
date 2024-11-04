@@ -7,6 +7,7 @@ from pages.alerts_windows.alerts_windows import AlertsWindows
 from pages.alerts_windows.nestedframes import NestedFrames
 
 
+# Пример подхода One test, one way
 @allure.title('Test switch to parent frame')
 def test_switch_to_parent_frame(setup_user, setup_driver):
     main_page = Main(setup_user, setup_driver)

@@ -17,6 +17,7 @@ def alerts_page(alerts_windows_page):
     yield alerts_page
 
 
+# Пример подхода POM (через классы)
 @allure.title('Test accept simple alert with check text')
 class TestSimpleAlert:
     @allure.step('check text in simple alert')

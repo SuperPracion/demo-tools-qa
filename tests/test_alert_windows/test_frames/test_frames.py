@@ -12,6 +12,7 @@ def frames_page(alerts_windows_page):
     yield frames_page
 
 
+# Пример полного сокрытия
 @allure.title('Test switch to page frame 1')
 @allure.step('switch to frame 1')
 def test_switch_to_frame1(frames_page):

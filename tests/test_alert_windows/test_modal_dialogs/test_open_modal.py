@@ -13,6 +13,7 @@ def modal_dialogs_page(alerts_windows_page):
     yield modal_dialogs_page
 
 
+# Пример полного сокрытия
 @allure.title('Test open small dialog modal')
 @allure.step('open small modal')
 def test_open_small_modal(modal_dialogs_page):
